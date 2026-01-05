@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.generics import ListAPIView, UpdateAPIView, CreateAPIView, RetrieveAPIView, DestroyAPIView
 
 from .models import Car, Moto
-from .serializers import CarSerializer, MotoSerializer
+from .serializers import CarSerializer, MotoSerializer, MileageSerializer
 
 
 class CarViewSet(viewsets.ModelViewSet):
@@ -32,3 +32,7 @@ class MotoRetrieveAPIView(RetrieveAPIView):
 class MotoDestroyAPIView(DestroyAPIView):
     queryset = Moto.objects.all()
     serializer_class = MotoSerializer
+
+
+class MileageCreateAPIView(CreateAPIView):
+    serializer_class = MileageSerializer
