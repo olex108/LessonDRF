@@ -41,10 +41,11 @@ class MotoMileageSerializer(serializers.ModelSerializer):
 
 class MotoCreateSerializer(ModelSerializer):
     mileage = MileageSerializer(many=True)
+    owner = serializers.ReadOnlyField(source='owner.id')
 
     class Meta:
         model = Moto
-        fields = "__all__"
+        fields = ["title", "description", "mileage", "owner"]
 
     def create(self, validated_data):
         mileage = validated_data.pop("mileage")
